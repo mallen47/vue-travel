@@ -35,19 +35,20 @@ const routes = [
     path: "/jamaica",
     name: "jamaica",
     component: () =>
-      import(/* webpackChunkName: "jamaica" */"../views/Jamaica"),
+      import(/* webpackChunkName: "jamaica" */ "../views/Jamaica"),
   },
   {
     path: "/panama",
     name: "panama",
-    component: () =>
-      import(/* webpackChunkName: "panama" */"../views/Panama"),
+    component: () => import(/* webpackChunkName: "panama" */ "../views/Panama"),
   },
   {
-    path: "/details",
+    path: "/details/:id",
     name: "DestinationDetails",
     component: () =>
-      import(/* webpackChunkName: "DestinationDetails" */"../views/DestinationDetails")
+      import(
+        /* webpackChunkName: "DestinationDetails" */ "../views/DestinationDetails"
+      ),
   }
 ];
 
