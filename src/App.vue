@@ -1,18 +1,16 @@
 <template>
   <div id="app">
     <TheNavigation/>
-    <router-view />
+    <router-view :key="$route.path"/>
   </div>
 </template>
 <script>
 import TheNavigation from "@/components/TheNavigation";
-
 export default {
   components: {
-    TheNavigation
-  }
-}
-
+    TheNavigation,
+  },
+};
 </script>
 
 <style>
