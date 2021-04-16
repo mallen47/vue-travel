@@ -1,5 +1,6 @@
 <template>
   <div>
+    <GoBack />
     <section class="destination">
       <h1>{{destination.name}}</h1>
       <div class="destination-details">
@@ -11,7 +12,7 @@
       </div>
     </section>
     <section class="experiences">
-      <h2>Top exeperiences in {{ destination.name }}</h2>
+      <h2>Top experiences in {{ destination.name }}</h2>
       <div class="cards">
         <div
           v-for="experience in destination.experiences"
@@ -29,7 +30,7 @@
               :alt="experience.name"
             />
             <span class="card_text">
-            {{ experience.name }}
+              {{ experience.name }}
             </span>
           </router-link>
         </div>
@@ -37,24 +38,26 @@
       <router-view :key="$route.path" />
     </section>
   </div>
-
-
 </template>
 
 <script>
-import store from "@/store.js";
+import GoBack from "@/components/GoBack"
+import store from "@/store.js"
 export default {
-  data(){
+  components: {
+    GoBack
+  },
+  data() {
     return {};
   },
   props: {
     slug: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  computed:{
-    destination(){
+  computed: {
+    destination() {
       return store.destinations.find(
         (destination) => destination.slug === this.slug
       );
@@ -70,12 +73,10 @@ img {
   width: 100%;
   max-height: 400px;
 }
-
 .destination-details {
   display: flex;
   justify-content: space-between;
 }
-
 p {
   margin: 0 40px;
   font-size: 20px;
