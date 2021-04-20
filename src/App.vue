@@ -65,4 +65,10 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+.input {
+  border: 1px solid green;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 </style>

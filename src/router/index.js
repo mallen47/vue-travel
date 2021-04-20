@@ -43,6 +43,17 @@ const routes = [
     }
   },
   {
+    path: "/user",
+    name: "user",
+    component: () => import(/* webpackChunkName: "User" */ "../views/User"),
+    meta: {requiresAuth: true}
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import(/* webpackChunkName: "Login" */ "../views/Login")
+  },
+  {
     path: "/404",
     alias: "*",
     name: "notFound",
@@ -72,6 +83,20 @@ const router = new VueRouter({
     }
   },
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if(!store.user) {
+      next({
+        name: "login"
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
